@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
     from: config ? config.auth.user : process.env.ZAAGEL_USER,
     to: to,
     subject: subject || "Zaagel",
-    template: template || "email",
+    template: template || "message-sent",
     context: data,
   };
 
