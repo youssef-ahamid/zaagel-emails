@@ -1,24 +1,24 @@
-var nodemailer = require('nodemailer');
+const express = require("express");
+const app = express();
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'youremail@gmail.com',
-    pass: 'yourpass'
-  }
+const dotenv = require("dotenv");
+dotenv.config();
+
+const cors = require(`cors`);
+app.use(cors());
+
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Zaagel");
 });
 
-var mailOptions = {
-  from: 'youremail@gmail.com',
-  to: "toemail@gmail.com",
-  subject: 'Sending Email using Node.js',
-  text: 'That was easy!'
-};
+const mailRoute = require("./routes/mail");
+app.use("/mail", mailRoute);
 
-transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
+app.listen(PORT, () => {
+  console.log(`Zaagel live on port ${PORT}`);
 });
