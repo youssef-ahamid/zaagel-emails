@@ -16,7 +16,6 @@ const handlebarOptions = {
 
 router.post("/", async (req, res) => {
   const { data, to, subject, template, config, replyTo } = req.body;
-  res.header("Access-Control-Allow-Origin", "*");
 
   const isConfig = config && config.auth
   let mailOptions = {
@@ -50,7 +49,10 @@ router.post("/", async (req, res) => {
   try {
     transporter
       .sendMail(mailOptions)
-      .then((data) => res.send({ status: 200, data }));
+      .then((data) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.send({ status: 200, data })
+      });
   } catch (error) {
     res.status(500).send({ error });
   }
