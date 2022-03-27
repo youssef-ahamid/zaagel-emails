@@ -15,18 +15,20 @@ const handlebarOptions = {
 };
 
 router.post("/", async (req, res) => {
-  const { data, to, subject, template, config } = req.body;
+  const { data, to, subject, template, config, replyTo } = req.body;
 
+  const isConfig = config && config.auth
   let mailOptions = {
-    from: config ? config.auth.user : process.env.ZAAGEL_USER,
+    from: isConfig ? config.auth.user : process.env.ZAAGEL_USER,
     to: to,
     subject: subject || "Zaagel",
     template: template || "message-sent",
     context: data,
+    replyTo: replyTo || process.env.ZAAGEL_USER,
   };
 
   let transporter;
-  if (config) transporter = nodemailer.createTransport(config);
+  if (isConfig) transporter = nodemailer.createTransport(config);
   else
     transporter = nodemailer.createTransport({
       service: "Outlook365",
