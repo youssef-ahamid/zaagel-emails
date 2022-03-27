@@ -1,4 +1,5 @@
 const router = require("express").Router();
+var cors = require(`cors`);
 
 const path = require("path");
 const nodemailer = require("nodemailer");
@@ -14,7 +15,7 @@ const handlebarOptions = {
   extName: ".handlebars",
 };
 
-router.post("/", async (req, res) => {
+router.post("/", cors(), async (req, res) => {
   const { data, to, subject, template, config, replyTo } = req.body;
 
   const isConfig = config && config.auth
