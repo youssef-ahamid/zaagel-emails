@@ -10,7 +10,8 @@ class Zaagel {
         this.config = configuration
     }
     
-    mail(to, subject, template, body, replyTo) {
+    mail(options = {}, requestOptions = {}) {
+        const { to, subject, template, body, replyTo } = options
         fetch(`${this.api}/mail`, {
             method: "POST",
             headers: {'Content-Type': 'application/json'}, 
@@ -24,7 +25,8 @@ class Zaagel {
                 },
                 config: this.config,
                 replyTo: replyTo || this.siteData.siteEmail,
-            })
+            }),
+            ...requestOptions,
         }).then(res => {
             return res
         });

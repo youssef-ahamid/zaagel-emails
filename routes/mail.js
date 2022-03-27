@@ -15,6 +15,8 @@ const handlebarOptions = {
   extName: ".handlebars",
 };
 
+router.options('/', cors()) // enable pre-flight request for mail request
+
 router.post("/", cors(), async (req, res) => {
   const { data, to, subject, template, config, replyTo } = req.body;
 
