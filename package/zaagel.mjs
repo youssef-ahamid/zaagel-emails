@@ -10,11 +10,12 @@ class Zaagel {
         this.config = configuration
     }
     
-    mail(options = {}, requestOptions = {}) {
+    mail(options = {}) {
         const { to, subject, template, body, replyTo } = options
         fetch(`${this.api}/mail`, {
             method: "POST",
             headers: {'Content-Type': 'application/json'}, 
+            mode: 'cors',
             body: JSON.stringify({
                 subject,
                 to,
@@ -26,7 +27,6 @@ class Zaagel {
                 config: this.config,
                 replyTo: replyTo || this.siteData.siteEmail,
             }),
-            ...requestOptions,
         }).then(res => {
             return res
         });
