@@ -1,5 +1,4 @@
 const router = require("express").Router();
-var cors = require(`cors`);
 
 const path = require("path");
 const nodemailer = require("nodemailer");
@@ -15,8 +14,9 @@ const handlebarOptions = {
   extName: ".handlebars",
 };
 
-router.post("/", cors(), async (req, res) => {
+router.post("/", async (req, res) => {
   const { data, to, subject, template, config, replyTo } = req.body;
+  res.header("Access-Control-Allow-Origin", "*");
 
   const isConfig = config && config.auth
   let mailOptions = {
