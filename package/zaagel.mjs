@@ -33,5 +33,5 @@ class Zaagel {
     }
 }
 
-const zaagel = new Zaagel('http://zaagel.samuraisoftware.house')
+const zaagel = new Zaagel('https://zaagel.samuraisoftware.house')
 export default zaagel
