@@ -77,9 +77,11 @@ Here's where this project is headed:
 
 🎁  More email templates
 
-🎁  Email scheduling (send at time t)
+🎁  
 
 #### Later:
+🤯 Email scheduling (send at time t)
+
 🤯 Visual email editor
 
 🤯 Dashboard to track email performance 
