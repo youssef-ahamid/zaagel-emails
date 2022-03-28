@@ -34,8 +34,8 @@ const message = {
   replyTo: "other-email@domain.com",
 }
 
-import zaagel from  'zaagel';
-zaagel.mail(message);
+import zaagel from  'zaagel'
+zaagel.mail(message)
 ```
 
 
