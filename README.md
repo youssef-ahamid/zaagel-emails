@@ -21,7 +21,7 @@ const data = {
   name: 'foo',
   decription: 'bar',
   message: 'foo bar never gets old',
-};
+}
 ```
 
 THIS is how easy it is to send it as a templated email with zaagel
@@ -64,7 +64,7 @@ const config = {
   },
 }
 
-import zaagel from  'zaagel';
+import zaagel from  'zaagel'
 zaagel.configure(siteData, config)
 ```
 
