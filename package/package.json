@@ -1,6 +1,6 @@
 {
   "name": "zaagel",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "send emails anywhere in 2 lines of code ",
   "type": "module",
   "main": "zaagel.mjs",
