@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 
 // headers
 app.use(function (req, res, next) {
+  res.setHeader('crossorigin', 'anonymous');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   next();
