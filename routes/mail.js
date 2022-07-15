@@ -17,6 +17,8 @@ const handlebarOptions = {
 router.post("/", async (req, res) => {
   const { data, to, subject, template, config, replyTo } = req.body;
 
+  console.log({to, subject, template})
+
   const isConfig = config && config.auth
   let mailOptions = {
     from: isConfig ? config.auth.user : process.env.ZAAGEL_USER,
