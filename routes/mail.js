@@ -49,12 +49,9 @@ router.post("/", async (req, res) => {
   transporter.use("compile", hbs(handlebarOptions));
 
   try {
-    transporter
-      .sendMail(mailOptions)
-      .then((data) => {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.send({ status: 200, data })
-      });
+    const mail = await transporter.sendMail(mailOptions);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.send({ status: 200, data: mail });
   } catch (error) {
     res.status(500).send({ error });
   }
